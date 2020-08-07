@@ -10,17 +10,21 @@ logging.basicConfig(filename="mouse_log.txt",
                     level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 MOUSE_BUTTON = Button.button9
+KEY_ONE = Key.shift_l
+KEY_TWO = Key.ctrl_l
 
 mouse_pressed = False
 key_pressed = False
 
 def autofire(x, y):
+    global mouse_pressed
+    global key_pressed
     return mouse_pressed and key_pressed and pixelPadding(x, y)
 
 
 def on_move(x, y):
     if autofire(x, y) :
-        # log("Mouse moved to ({0}, {1})".format(x, y))
+        log("Mouse clicked on ({0}, {1})".format(x, y))
         mouse.click(delay=rand_ms())
 
 
@@ -39,8 +43,9 @@ def on_click(x, y, button, pressed):
 
 def on_press(key):
     global key_pressed
-    key_pressed = True
-    log('Key pressed ({0})'.format(key))
+    if key == KEY_ONE or key == KEY_TWO:
+        key_pressed = True
+        log('Key pressed ({0})'.format(key))
 
 def on_release(key):
     global key_pressed
