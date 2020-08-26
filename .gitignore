@@ -1,2 +1,2 @@
 *.vim
-mouse_log.txt
+__pycache__

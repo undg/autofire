@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 from subprocess import Popen, PIPE
 
-top_left_x = None
-top_left_y = None
+left = None
+top = None
 width = None
 height = None
 
@@ -19,17 +19,17 @@ win_info_stdout = Popen(['xwininfo', '-name', 'Path of Exile'], universal_newlin
 
 for line in win_info_stdout.stdout:
     if "Absolute upper-left X" in line:
-        top_left_x = parse_geometry(line)
+        left = parse_geometry(line)
     if "Absolute upper-left Y" in line:
-        top_left_y = parse_geometry(line)
+        top = parse_geometry(line)
     if "Width:" in line:
         width = parse_geometry(line)
     if "Height:" in line:
         height = parse_geometry(line)
 
 # print("Game window coordinates:")
-# print("top_left_x: ", top_left_x)
-# print("top_left_y: ", top_left_y)
+# print("left: ", left)
+# print("top: ", top)
 # print("width: ", width)
 # print("height: ", height)
 
