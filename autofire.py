@@ -2,7 +2,7 @@
 import autopy
 from pynput.mouse import Listener as MouseListener, Button
 from pynput.keyboard import Listener as KeyboardListener, Key
-import logging
+# import logging
 import random as Random
 
 
@@ -10,8 +10,8 @@ MOUSE_BUTTON = Button.button9
 KEY_ONE = Key.shift_l
 KEY_TWO = Key.ctrl_l
 
-logging.basicConfig(filename="mouse_log.txt",
-                    level=logging.DEBUG, format='%(asctime)s: %(message)s')
+# logging.basicConfig(filename="mouse_log.txt",
+#                     level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 
 def log(str):
