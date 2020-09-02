@@ -11,15 +11,21 @@ import pyautogui
 highlight_path = './img/highlight/*.png'
 img_highlight_needles = glob.glob(highlight_path, recursive=False)
 
-
-
 with mss.mss() as sct:
     # The screen part to capture
     region = {"top": poe.top, "left": poe.left, "width": poe.width, "height": poe.height}
+
     # Grab the data
     sct_img = sct.grab(region)
+
     # Create the Image in PIL format
     screenshot = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+
+    # Save mouse position
+    mouse_init_pos = pyautogui.position()
+
     for img_highlight in img_highlight_needles:
         items = list(pyautogui.locateAll(img_highlight, screenshot))
         click_items(items)
+
+    pyautogui.moveTo(mouse_init_pos)
