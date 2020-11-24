@@ -4,6 +4,7 @@ from pynput.mouse import Listener as MouseListener, Button
 from pynput.keyboard import Listener as KeyboardListener, Key
 # import logging
 import random as Random
+from pick_highlighted import pick
 
 
 MOUSE_BUTTON = Button.button9
@@ -54,6 +55,8 @@ def on_press(key):
     if trigger_key_pressed(key):
         key_pressed = True
         log('Key pressed ({0})'.format(key))
+    if trigger_pick_highlighted(key):
+        pick()
 
 
 def on_release(key):
@@ -76,6 +79,8 @@ def rand_ms():
 def trigger_key_pressed(key):
     return key == KEY_ONE or key == KEY_TWO
 
+def trigger_pick_highlighted(key):
+    return key == Key.f3
 
 mouse_listener = MouseListener(on_move=on_move, on_click=on_click)
 keyboard_listener = KeyboardListener(on_press=on_press, on_release=on_release)
