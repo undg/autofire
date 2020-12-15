@@ -1,5 +1,6 @@
 #!/bin/env python3
-import autopy
+# import autopy
+import pyautogui
 from pynput.mouse import Listener as MouseListener, Button
 from pynput.keyboard import Listener as KeyboardListener, Key
 # import logging
@@ -34,7 +35,8 @@ def on_move(x, y):
     log("mouse position: ({0}, {1})".format(x, y))
     if autofire(x, y):
         log("Mouse clicked on ({0}, {1})".format(x, y))
-        autopy.mouse.click(delay=rand_ms())
+        # autopy.mouse.click(delay=rand_ms())
+        pyautogui.click()
 
 
 def on_click(x, y, button, pressed):
